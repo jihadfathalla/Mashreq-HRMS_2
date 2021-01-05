@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="container">
+    <form method="POST">
+        {%csrf_token%}
+        <div class="row">
+            <div class="col-6">
+                {{form.username|as_crispy_field}}
+            </div>
+            
+            <div class="col-6">
+                {{form.email|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.gender|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.address|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.nationality|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.id_type|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.id_num|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.hire_date|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.social_status|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.emp_unm|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.date_of_birth|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.place_of_birth|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.mobile_num|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.insured|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.is_active|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.has_medical|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.balance|as_crispy_field}}
+            </div>
+            <div class="col-6">
+                {{form.manager|as_crispy_field}}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Create Employee</button>
+    </form>
+</div>
+
+{%endblock content%}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+<br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">Create Employee</button>
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Employees</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                   
+ <tr>
+    <th>Employee name</th>
+    <th>Emp no</th>
+    <th>Hire date</th>
+    <th>Position</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+
+    <tr>
+        <th>Employee name</th>
+        <th>Emp no</th>
+        <th>Employee Num</th>
+        <th>Gender</th>
+        <th>Id Num</th>
+        <th>Balance</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>{{em.username}}</td>
+        <td>{{em.emp_unm}}</td>
+        <td>{{em.gender}}</td>
+        <td>{{em.id_num}}</td>
+        <td>{{em.balance}}</td>
+        <td>
+            <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="{{em.id}}">View</a></button>
+            <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/employees/edit/{{em.id}}">Edit</a></button>
+            <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/employees/delete/{{em.id}}">Delete</a></button>
+
+        </td>
+    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
+
+
+

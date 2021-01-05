@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+<br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="department/add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">Create Position</button>
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Positions</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+  
+<tr>
+    <th>Position name</th>
+    <th>Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>{{po.position_name}}</td>
+    <td>
+        
+        <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/contracts/positions/edit/{{po.id}}">Edit</a></button>
+        <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/contracts/positions/delete/{{po.id}}">Delete</a></button>
+
+    </td>
+</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
+
+
+

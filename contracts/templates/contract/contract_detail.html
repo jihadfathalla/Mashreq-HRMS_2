@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+<br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">Create Contract</button>
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Employee Level</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Employee name</th>
+                        <th>Employee Department</th>
+                        <th>Employee Position</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                        <td>{{em.user_id.username}}</td>
+                        <td>{{em.dep_id.name}}</td>
+                        <td>{{em.pos_id.name}}</td>
+                        <td>{{em.start_date}}</td>
+                        <td>{{em.end_date}}</td> 
+                        <td>
+                          
+                            <button type="button"class="btn btn-info float-left  mr-2">
+                                <a href="/contracts/edit/{{em.id}}">Edit</a></button>
+                            <button type="button"class="btn btn-info float-left  mr-2">
+                                <a href="/contracts/delete/{{em.id}}">Delete</a></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}

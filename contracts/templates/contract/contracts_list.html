@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+<br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">Create Contract</button>
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Employee Level</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                   
+ <tr>
+    <th>Employee name</th>
+    <th>Emp no</th>
+    <th>Position</th>
+    <th>Hire date</th>
+    <th>End Date</th>
+    <th>Actions</th>
+
+
+</tr>
+</thead>
+<tbody>
+<tr>
+    {% for em in all_contracts  %}
+    <td>{{em.user_id.username}}</td>
+    <td>{{em.user_id.emp_unm}}</td>
+    <td>{{em.pos_id}}</td>
+    <td>{{em.start_date}}</td>
+    <td>{{em.end_date_func}}</td>
+
+    <td>
+        <button type="button"class="btn btn-info float-left  mr-2">
+            <a href="/contracts/{{em.id}}">View</a></button>
+        <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/contracts/edit/{{em.id}}">Edit</a></button>
+        <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/contracts/delete/{{em.id}}">Delete</a></button>
+    </td>
+</tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
+
+
+ <tr>
+                    <th>Employee name</th>
+                    <th>Emp no</th>
+                    <th>Employee Num</th>
+                    <th>Gender</th>
+                    <th>Id Num</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for em in all_employees  %}
+                    <td>{{em.first_name}}</td>
+                    <td>{{em.emp_unm}}</td>
+                    <td>{{em.gender}}</td>
+                    <td>{{em.id_num}}</td>
+                    <td>{{em.balance}}</td>
+                    <td>
+                        <button type="button"class="btn btn-info float-left  mr-2">
+                            <a href="{{em.id}}">View</a></button>
+                        <button type="button"class="btn btn-info float-left  mr-2">
+                            <a href="edit/{{em.id}}">Edit</a></button>
+                        <button type="button"class="btn btn-info float-left  mr-2">
+                            <a href="delete/{{em.id}}">Delete</a></button>
+
+                    </td>
+                </tr>
+                {% endfor%}
+

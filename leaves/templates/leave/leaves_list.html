@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<link href="{% static 'css/list.css' %}" rel="stylesheet" />
+<br>
+<div class="ml-4" style="margin-left: auto;">
+    <a href="/leaves/add">
+        <button id="add_btn" type="button" style="margin-bottom: 20px;" class="btn btn-primary">Create Leave</button>
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Leaves</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Leave name</th>
+                        <th>Leave Valuo</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for le in all_leaves  %}
+                        <td>{{le.leave_name}}</td>
+                        <td>{{le.leave_value}}</td>
+                        <td>
+                            <button type="button"class="btn btn-info float-left  mr-2">
+                                <a href="/leaves/{{le.id}}">View</a></button>
+                            <button type="button"class="btn btn-info float-left  mr-2">
+                                <a href="/leaves/edit/{{le.id}}">Edit</a></button>
+                            <button type="button"class="btn btn-info float-left  mr-2">
+                                <a href="/leaves/delete/{{le.id}}">Delete</a></button>
+    
+    
+                        </td>
+                    </tr>
+                    {% endfor%}
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
+
+

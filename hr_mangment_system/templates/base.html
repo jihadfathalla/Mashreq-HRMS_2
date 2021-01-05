@@ -1,0 +1,12 @@
+{% load static %}
+{% include 'header.html' %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            
+            {% block content %}
+                
+            {% endblock content %}
+        </div>
+    </main>
+    {% include 'footer.html' %}
