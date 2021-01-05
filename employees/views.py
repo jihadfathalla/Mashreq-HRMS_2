@@ -20,7 +20,7 @@ def profile(request):
     return render(request, 'profile/profile.html')
 
 
-@allowed_users(allowed_roles=['admin'])
+#@allowed_users(allowed_roles=['admin'])
 def signupPage(request):
     form = CustomUserCreationForm()
     if request.method == "POST":
@@ -37,8 +37,7 @@ def signupPage(request):
             recipient_list = [user.email, ] 
             send_mail( subject, message, email_from, recipient_list ) 
         return HttpResponseRedirect('/employees/')
-    context = {'form': form}
-    return render(request, 'registration/signup.html', context)
+    return render(request, 'employee/create_employee.html', {'form': form})
 
 
 def loginPage(request):
@@ -65,15 +64,15 @@ def logoutPage(request):
     logout(request)
     return HttpResponseRedirect('/employees/login/')
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def employees_list(request):
     all_employees = CustomUser.objects.all()
     context = {'all_employees': all_employees}
     return render(request, 'employee/employees_list.html', context)
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def create_employee(request):
     form = CustomUserCreationForm()
     if request.method == "POST":
@@ -84,14 +83,14 @@ def create_employee(request):
             return HttpResponseRedirect('/employees/')
     return render(request, 'employee/create_employee.html', {'form': form})
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def employee_detail(request, num):
     em = CustomUser.objects.get(id=num)
     context = {'em': em}
     return render(request, 'employee/employee_detail.html', context)
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def edit_employee(request, num):
     em = CustomUser.objects.get(id=num)
     context = {'em': em}
@@ -105,8 +104,8 @@ def edit_employee(request, num):
     return render(request, 'employee/edit_employee.html', {'form': form})
 
 
-@login_required(login_url='login')
-@allowed_users(allowed_roles=['admin'])
+#@login_required(login_url='login')
+#@allowed_users(allowed_roles=['admin'])
 def delete_employee(request, num):
     em = CustomUser.objects.get(id=num)
     em.delete()

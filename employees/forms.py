@@ -18,9 +18,8 @@ class CustomUserCreationForm(UserCreationForm):
             "date_of_birth":DateInput(),
             "hire_date":DateInput(),
         }
-        fields = (
-        'username',
-        'email',
+        fields = UserCreationForm.Meta.fields+(
+		'email',
         'gender',
 		'address',
 		'nationality',

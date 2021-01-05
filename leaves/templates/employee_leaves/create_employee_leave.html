@@ -3,6 +3,14 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <br>
+<h1>New Leave</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 <div class="container">
     <form method="POST">
         {%csrf_token%}
@@ -17,8 +25,15 @@
                 {{form.start_date|as_crispy_field}}
             </div>
             <div class="col-6">
-                {{form.end_date|as_crispy_field}}
+                {{form.end_date|as_crispy_field}} 
             </div>
+             <div class="col-6">
+                {{form.resume_date|as_crispy_field}}
+            </div> 
+              <div class="col-6">
+                {{form.leave_reasons|as_crispy_field}}
+            </div>
+             
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg btn-block">Create Employee Leave</button>

@@ -8,8 +8,16 @@
         {%csrf_token%}
         <div class="row">
             <div class="col-6">
-                {{form.username|as_crispy_field}}
+                {{form.username|as_crispy_field}} 
             </div>
+
+            <div class="col-6">
+				{{form.password1|as_crispy_field}} 
+			</div>
+
+             <div class="col-6">
+				{{form.password2|as_crispy_field}}  
+			</div>
             
             <div class="col-6">
                 {{form.email|as_crispy_field}}

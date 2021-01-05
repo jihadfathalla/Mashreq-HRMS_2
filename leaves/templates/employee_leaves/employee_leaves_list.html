@@ -18,14 +18,13 @@
                 <thead>
  <tr>
     <th>Employee Name</th>
-    <th>Employee Email</th>
     <th>Leave start Date</th>
     <th>Leave End Date</th>
     <th>Resume Date</th>
     <th>Number Of Days</th> 
-    <th>Leves Type</th>
-    <th>Confimed</th>
-    <th colspan="2">Actions</th>
+    <th>Leave Type</th>
+    <th>Confim</th>
+    <th>Actions</th>
                        
 
 
@@ -34,28 +33,29 @@
 <tbody>
 {%for emp in all_leaves_requests%}
 <tr>
-    <td>{{emp.emp_id}}</td>
-    <td>{{emp.emp_id.email}}</td>
+    <td>{{emp.emp_id.username}}</td>
     <td>{{emp.start_date}}</td>
     <td>{{emp.end_date}}</td>
-    <td>{{emp.calculate_resume_date}}</td>
+    <td>{{emp.resume_date}}</td>
     <td>{{emp.calculate_number_of_days}} days</td>
     <td>{{emp.leave_id}}</td>
-    <td>{{emp.confirmed}}</td>
-<td>
-    <a href="{{emp.id}}/approved">
-        <button type="button" class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-check"></i>
-                                </button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{emp.id}}/not_approved">
-                                <button type="button" class="btn btn-outline-danger btn-sm">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </a>
-                        </td>
+    <td>{{emp.confirm}}</td>
+ <td> 
+
+ 
+                {% if emp.confirm == "Not approved" %}
+                <button type="button"class="btn btn-info float-left  mr-2">
+                <a href="/leaves/employee_leaves/{{emp.id}}/approved/">Approve</a>
+                </button>
+                {% elif  emp.confirm == "Approved" %}  
+                 <button type="button"class="btn btn-danger float-left  mr-2">
+                <a href="/leaves/employee_leaves/{{emp.id}}/not_approved/"> Not approve</a>
+                </button>
+                
+                
+                {%endif%}
+              
+</td>
 </tr>
 {%endfor%}
                 </tbody>
@@ -65,8 +65,3 @@
 </div>
 
 {%endblock content%}
-
-
-
-
-

@@ -18,8 +18,8 @@ urlpatterns = [
     path('leaves/employee_leaves/delete/<num>/', views.delete_employee_leave),
 
 
-    path('leaves/<num>/approved',views.approved),
-    path('leaves/<num>/not_approved',views.not_approved),
+    path('leaves/employee_leaves/<num>/approved/',views.approved),
+    path('leaves/employee_leaves/<num>/not_approved/',views.not_approved),
 
     
 ]

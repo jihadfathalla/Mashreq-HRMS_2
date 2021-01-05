@@ -13,14 +13,15 @@ class leaveForm(forms.ModelForm):
         model = LeaveMaster
         fields = "__all__"
 
-
+ 
 class EmployeeLeaveForm(forms.ModelForm):
     class Meta:
         model = EmployeeLeave
         fields = "__all__"
         widgets = {
             'start_date': DateInput(),
-            'end_date': DateInput()
+            'end_date': DateInput(),
+            'resume_date' : DateInput(),
         }
 
     def check_leave_is_end(self, user_id):
